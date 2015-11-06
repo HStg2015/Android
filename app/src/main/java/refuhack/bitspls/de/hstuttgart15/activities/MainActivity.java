@@ -1,5 +1,6 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import refuhack.bitspls.de.hstuttgart15.ItemActivty;
 import refuhack.bitspls.de.hstuttgart15.R;
 
 public class MainActivity extends AppCompatActivity
@@ -29,8 +31,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                actionButtonPressed();
             }
         });
 
@@ -42,6 +43,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void actionButtonPressed() {
+        Intent intent = new Intent(MainActivity.this, ItemActivty.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
