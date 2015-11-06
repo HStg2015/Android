@@ -43,11 +43,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        ImageView image = (ImageView) findViewById(R.id.person_photo);
+        image.setImageResource(R.drawable.max);
+
         TextView text = (TextView) findViewById(R.id.person_name);
         text.setText("FelixB");
 
-        ImageView image = (ImageView) findViewById(R.id.person_photo);
-        image.setImageResource(R.drawable.max);
     }
 
     @Override
