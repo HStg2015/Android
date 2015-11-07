@@ -18,7 +18,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.joda.time.DateTime;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
@@ -47,8 +51,16 @@ public class MainActivity extends AppCompatActivity
                 //Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
                 //startActivity(intent);
                 //eintragfrag.show(fm, "EintragFrag");
-                AnzeigenNetwork an = new AnzeigenNetwork(getApplicationContext());
-                an.getData("https://morning-waters-8909.herokuapp.com/simple_offer/");
+
+                try {
+                    DateTime dt = new DateTime("2015-11-07T15:01:07.078805Z");
+
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                //AnzeigenNetwork an = new AnzeigenNetwork(getApplicationContext());
+                //an.getData("https://morning-waters-8909.herokuapp.com/simple_offer/");
 
             }
         });

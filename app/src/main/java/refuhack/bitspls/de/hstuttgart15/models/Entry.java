@@ -2,7 +2,10 @@ package refuhack.bitspls.de.hstuttgart15.models;
 
 import android.net.Uri;
 
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,9 +15,35 @@ public class Entry {
     protected String name, description, phoneNr, zipcode, mail;
     protected Uri imageUri;
     protected int entryId;
+    protected DateTime date;
 
-    public Entry(String name, String description, String phoneNr, String zipcode, String mail,
-                 Uri imageUri) {
+    public Entry(String name, String description, String phoneNr, String zipcode, String mail) {
+        this.name = name;
+        this.description = description;
+        this.phoneNr = phoneNr;
+        this.zipcode = zipcode;
+        this.mail = mail;
+    }
+    public Entry(String name, String description, String phoneNr, String zipcode, String mail, DateTime date) {
+        this.name = name;
+        this.description = description;
+        this.phoneNr = phoneNr;
+        this.zipcode = zipcode;
+        this.mail = mail;
+        this.date = date;
+        //this.imageUri = imageUri;
+    }
+    public Entry(String name, String description, String phoneNr, String zipcode, String mail, Uri imageUri, DateTime date) {
+        this.name = name;
+        this.description = description;
+        this.phoneNr = phoneNr;
+        this.zipcode = zipcode;
+        this.mail = mail;
+        this.imageUri = imageUri;
+        this.date = date;
+    }
+
+    public Entry(String name, String description, String phoneNr, String zipcode, String mail, Uri imageUri) {
         this.name = name;
         this.description = description;
         this.phoneNr = phoneNr;
