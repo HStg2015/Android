@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import refuhack.bitspls.de.hstuttgart15.R;
+import refuhack.bitspls.de.hstuttgart15.activities.activitys.ItemActivty;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
