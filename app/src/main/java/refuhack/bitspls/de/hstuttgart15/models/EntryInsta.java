@@ -42,7 +42,6 @@ public class EntryInsta {
         this.endDate = timeEnd;
     }
 
-
     public void setRefugeeCamp(int refugeeCamp) {
         this.campID = refugeeCamp;
     }

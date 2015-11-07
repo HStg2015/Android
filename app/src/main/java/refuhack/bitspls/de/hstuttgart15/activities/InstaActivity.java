@@ -1,7 +1,6 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,22 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import refuhack.bitspls.de.hstuttgart15.R;
-import refuhack.bitspls.de.hstuttgart15.models.Entry;
-import refuhack.bitspls.de.hstuttgart15.models.EntryAdapter;
 import refuhack.bitspls.de.hstuttgart15.models.EntryInstaAdapter;
-import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
 import refuhack.bitspls.de.hstuttgart15.network.AnzeigenInstaNetwork;
-import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
-import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
 public class InstaActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private RecyclerView rv;
+    private RecyclerView rvinsta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +51,11 @@ public class InstaActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        rv = (RecyclerView)findViewById(R.id.rv_insta);
-        rv.setHasFixedSize(true);
+        rvinsta = (RecyclerView)findViewById(R.id.rv_insta);
+        rvinsta.setHasFixedSize(true);
 
         GridLayoutManager glm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
-        rv.setLayoutManager(glm);
+        rvinsta.setLayoutManager(glm);
 
         initializeData();
         initializeAdapter();
@@ -79,7 +70,7 @@ public class InstaActivity extends AppCompatActivity
 
     private void initializeAdapter(){
         EntryInstaAdapter adapter = new EntryInstaAdapter(this);
-        rv.setAdapter(adapter);
+        rvinsta.setAdapter(adapter);
     }
 
     @Override
@@ -92,9 +83,6 @@ public class InstaActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_InstaHelp) {
-            Intent intent = new Intent(InstaActivity.this, InstaActivity.class);
-            startActivity(intent);
-            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

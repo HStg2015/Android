@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -135,10 +136,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_Kleinanzeigen) {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+
         } else if (id == R.id.nav_InstaHelp) {
+            rv=null;
+            Log.d("","Wow......");
             Intent intent = new Intent(MainActivity.this, InstaActivity.class);
             startActivity(intent);
             finish();

@@ -32,31 +32,28 @@ public class EntryInstaAdapter extends RecyclerView.Adapter<EntryInstaAdapter.En
 
     @Override
     public void onBindViewHolder(EntryViewHolder entryViewHolder, int i) {
+        System.out.println("Nearly");
         EntryInsta entry = eS.getList().get(i);
-        entryViewHolder.vName.setText(entry.getRefugeeCamp());
-        entryViewHolder.vDescription.setText(entry.getTimeStart());
+        entryViewHolder.vName.setText("Flüchtlings Organisation "+String.valueOf(entry.getRefugeeCamp()));
+
     }
 
     @Override
     public EntryViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View itemView;
-        itemView = LayoutInflater.
-                from(viewGroup.getContext()).
-                inflate(R.layout.cards, viewGroup, false);
+        itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cards, viewGroup, false);
 
         return new EntryViewHolder(itemView);
     }
 
     public class EntryViewHolder extends RecyclerView.ViewHolder {
-        protected TextView vName;
-        protected TextView vDescription;
-        protected ImageView vImage;
+        private TextView vName;
+        private TextView vDescription;
 
         public EntryViewHolder(View v){
             super(v);
             vName = (TextView) v.findViewById(R.id.person_name);
             vDescription = (TextView) v.findViewById(R.id.person_age);
-            vImage = (ImageView) v.findViewById(R.id.person_photo);
         }
     }
 
