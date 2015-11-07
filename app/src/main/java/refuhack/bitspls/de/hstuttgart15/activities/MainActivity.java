@@ -23,6 +23,7 @@ import java.util.List;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
 import refuhack.bitspls.de.hstuttgart15.models.EntryAdapter;
 import refuhack.bitspls.de.hstuttgart15.R;
+import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
 import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -42,9 +43,12 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
-                startActivity(intent);
+                //Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
+                //startActivity(intent);
                 //eintragfrag.show(fm, "EintragFrag");
+                AnzeigenNetwork an = new AnzeigenNetwork(getApplicationContext());
+                an.getData("https://morning-waters-8909.herokuapp.com/simple_offer/");
+
             }
         });
 
