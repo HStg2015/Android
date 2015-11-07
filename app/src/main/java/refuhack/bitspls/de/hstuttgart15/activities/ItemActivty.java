@@ -1,4 +1,4 @@
-package refuhack.bitspls.de.hstuttgart15.activities.activities;
+package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import refuhack.bitspls.de.hstuttgart15.R;
-import refuhack.bitspls.de.hstuttgart15.activities.MainActivity;
 
 public class ItemActivty extends AppCompatActivity {
     @Override
