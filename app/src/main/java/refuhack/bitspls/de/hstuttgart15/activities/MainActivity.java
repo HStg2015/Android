@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,12 +17,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private List<Entry> entryList;
+    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,38 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        rv = (RecyclerView)findViewById(R.id.rv);
+        rv.setHasFixedSize(true);
+
+        GridLayoutManager glm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
+        rv.setLayoutManager(glm);
+
+        initializeData();
+        initializeAdapter();
+
+    }
+
+    private void initializeData(){
+        entryList = new ArrayList<>();
+        entryList.add(new Entry("Felix B", "Android Dev", R.drawable.max));
+        entryList.add(new Entry("Max Mustermann", "User", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+    }
+
+    private void initializeAdapter(){
+        EntryAdapter adapter = new EntryAdapter(entryList);
+        rv.setAdapter(adapter);
     }
 
     @Override

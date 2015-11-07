@@ -10,6 +10,4 @@
     tools:context=".MainActivity"
     android:id="@+id/MainAct">
 
-    <TextView android:text="Hello World!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 </RelativeLayout>
