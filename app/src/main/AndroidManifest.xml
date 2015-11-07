@@ -23,11 +23,12 @@
         <activity
             android:name=".activities.ItemActivty"
             android:label="@string/title_activity_item_activty"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
-            />
+            
+        </activity>
 
         <activity android:name=".views.EintragHinzufuegenFragment"
             android:theme="@style/AppTheme.NoActionBar" >
