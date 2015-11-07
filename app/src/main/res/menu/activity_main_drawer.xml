@@ -7,8 +7,6 @@
             android:checked="true"/>
         <item android:id="@+id/nav_InstaHelp" android:icon="@android:drawable/ic_menu_gallery"
             android:title="InstaHelp" />
-        <item android:id="@+id/nav_Inventar" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Inventar" />
     </group>
 
 

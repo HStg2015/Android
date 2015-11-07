@@ -1,6 +1,7 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -62,17 +63,17 @@ public class InstaActivity extends AppCompatActivity
         GridLayoutManager glm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(glm);
 
-        initializeData();
         initializeAdapter();
+        initializeData();
         navigationView.setCheckedItem(R.id.nav_InstaHelp);
     }
 
-    private void initializeData(){
+    private void initializeData() {
         entryList = new ArrayList<>();
-        entryList.add(new Entry("Felix B", "Android Dev", R.drawable.max));
-        entryList.add(new Entry("Max Mustermann", "User", R.drawable.max));
-
+        Uri path = Uri.parse("android.resource://refuhack.de.bitspls.hstuttgart15" + R.drawable.max);
+        entryList.add(new Entry("Felix B", "Android Dev", "1234", "12345", "example@example.com", path));
     }
+
 
     private void initializeAdapter(){
         EntryAdapter adapter = new EntryAdapter(entryList);
