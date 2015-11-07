@@ -92,8 +92,6 @@ public class InstaActivity extends AppCompatActivity
             Intent intent = new Intent(InstaActivity.this, InstaActivity.class);
             startActivity(intent);
             finish();
-        } else if (id == R.id.nav_Inventar) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
