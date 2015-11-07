@@ -21,12 +21,11 @@
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ItemActivty"
+            android:name=".activities.ItemActivity"
             android:label="@string/title_activity_item_activty"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
