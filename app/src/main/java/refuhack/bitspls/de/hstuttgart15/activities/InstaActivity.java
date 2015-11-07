@@ -23,7 +23,9 @@ import java.util.List;
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
 import refuhack.bitspls.de.hstuttgart15.models.EntryAdapter;
+import refuhack.bitspls.de.hstuttgart15.models.EntryInstaAdapter;
 import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
+import refuhack.bitspls.de.hstuttgart15.network.AnzeigenInstaNetwork;
 import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
 import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
@@ -70,13 +72,13 @@ public class InstaActivity extends AppCompatActivity
     }
 
     private void initializeData() {
-        AnzeigenNetwork anzeigenNetwork = new AnzeigenNetwork(this);
-        anzeigenNetwork.getData("https://morning-waters-8909.herokuapp.com/help_time_offer/");
+        AnzeigenInstaNetwork anzeigenInstaNetwork = new AnzeigenInstaNetwork(this);
+        anzeigenInstaNetwork.getData("https://morning-waters-8909.herokuapp.com/help_time_search/");
     }
 
 
     private void initializeAdapter(){
-        EntryAdapter adapter = new EntryAdapter(this);
+        EntryInstaAdapter adapter = new EntryInstaAdapter(this);
         rv.setAdapter(adapter);
     }
 
