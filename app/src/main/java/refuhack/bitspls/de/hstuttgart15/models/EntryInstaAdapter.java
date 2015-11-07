@@ -34,7 +34,7 @@ public class EntryInstaAdapter extends RecyclerView.Adapter<EntryInstaAdapter.En
     public void onBindViewHolder(EntryViewHolder entryViewHolder, int i) {
         EntryInsta entry = eS.getList().get(i);
         entryViewHolder.vName.setText(entry.getRefugeeCamp());
-        entryViewHolder.vDescription.setText(entry.getTimeStart());
+        //entryViewHolder.vDescription.setText(entry.getTimeStart());
     }
 
     @Override

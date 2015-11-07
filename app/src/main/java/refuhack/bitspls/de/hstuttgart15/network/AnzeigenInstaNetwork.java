@@ -82,9 +82,8 @@ public class AnzeigenInstaNetwork {
         try {
             entryJson.put("id", e.getEntryId());
             entryJson.put("start_time", e.getTimeStart());
-            entryJson.put("city", e.getZipcode());
-            entryJson.put("telephone", e.getPhoneNr());
-            entryJson.put("email", e.getMail());
+            entryJson.put("end_time", e.getTimeEnd());
+            entryJson.put("camp", e.getRefugeeCamp());
 
 
             JsonObjectRequest req = new JsonObjectRequest(URL, entryJson,
