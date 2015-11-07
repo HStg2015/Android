@@ -11,7 +11,7 @@ import android.view.View;
 
 import refuhack.bitspls.de.hstuttgart15.R;
 
-public class ItemActivty extends AppCompatActivity {
+public class ItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class ItemActivty extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ItemActivty.this, MainActivity.class);
+        Intent intent = new Intent(ItemActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

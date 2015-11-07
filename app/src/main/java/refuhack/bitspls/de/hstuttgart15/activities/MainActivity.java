@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initializeAdapter(){
-        EntryAdapter adapter = new EntryAdapter(EntryStorage.getInstance().getList());
+        EntryAdapter adapter = new EntryAdapter(this);
         rv.setAdapter(adapter);
     }
 

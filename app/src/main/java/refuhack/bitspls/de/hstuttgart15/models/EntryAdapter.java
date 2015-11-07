@@ -1,11 +1,15 @@
 package refuhack.bitspls.de.hstuttgart15.models;
 
+import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -16,23 +20,25 @@ import refuhack.bitspls.de.hstuttgart15.R;
  */
 public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.EntryViewHolder> {
 
-    private List<Entry> entryList;
+    private EntryStorage eS;
+    private Context context;
 
-    public EntryAdapter(List<Entry> entryList) {
-        this.entryList = entryList;
+    public EntryAdapter(Context c) {
+        eS = EntryStorage.getInstance();
+        context = c;
     }
 
     @Override
     public int getItemCount() {
-        return entryList.size();
+        return eS.getList().size();
     }
 
     @Override
     public void onBindViewHolder(EntryViewHolder entryViewHolder, int i) {
-        Entry entry = entryList.get(i);
+        Entry entry = eS.getList().get(i);
         entryViewHolder.vName.setText(entry.name);
         entryViewHolder.vDescription.setText(entry.description);
-        entryViewHolder.vImage.setImageURI(entry.imageUri);
+        Picasso.with(context).load(entry.imageUri).into(entryViewHolder.vImage);
     }
 
     @Override
