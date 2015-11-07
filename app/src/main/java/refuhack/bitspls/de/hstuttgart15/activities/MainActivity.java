@@ -1,6 +1,7 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
@@ -70,7 +71,10 @@ public class MainActivity extends AppCompatActivity
 
     private void initializeData(){
         entryList = new ArrayList<>();
-        entryList.add(new Entry("Felix B", "Android Dev", R.drawable.max));
+        Uri path =
+        Uri.parse("android.resource://refuhack.de.bitspls.hstuttgart15" + R.drawable.max);
+        entryList.add(new Entry("Felix B", "Android Dev", "1234", "12345", "example@example.com", path));
+     /*   entryList.add(new Entry("Felix B", "Android Dev", R.drawable.max));
         entryList.add(new Entry("Max Mustermann", "User", R.drawable.max));
         entryList.add(new Entry("Max", "Guy", R.drawable.max));
         entryList.add(new Entry("Max", "Guy", R.drawable.max));
@@ -82,7 +86,7 @@ public class MainActivity extends AppCompatActivity
         entryList.add(new Entry("Max", "Guy", R.drawable.max));
         entryList.add(new Entry("Max", "Guy", R.drawable.max));
         entryList.add(new Entry("Max", "Guy", R.drawable.max));
-        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max)); */
     }
 
     private void initializeAdapter(){
