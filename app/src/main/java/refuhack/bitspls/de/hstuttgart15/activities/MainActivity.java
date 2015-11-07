@@ -1,6 +1,7 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,9 +32,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fm = getFragmentManager();
-                EintragHinzufuegenFragment eintragfrag = new EintragHinzufuegenFragment();
-                eintragfrag.show(fm, "EintragFrag");
+                Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
+                startActivity(intent);
+                //eintragfrag.show(fm, "EintragFrag");
             }
         });
 

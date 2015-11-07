@@ -8,7 +8,7 @@ import android.net.Uri;
 public class Anzeige {
     private String titel, beschreibung, telnr, stadtteil, mail;
     private Uri image;
-
+    private int id;
     public Anzeige(String titel, String beschreibung, String telnr, String stadtteil, String mail, Uri image) {
         this.titel = titel;
         this.beschreibung = beschreibung;

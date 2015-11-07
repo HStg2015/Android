@@ -4,18 +4,26 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.File;
@@ -30,31 +38,54 @@ import refuhack.bitspls.de.hstuttgart15.models.Anzeige;
 /**
  * Created by Lasse on 06.11.2015.
  */
-public class EintragHinzufuegenFragment extends DialogFragment {
+public class EintragHinzufuegenFragment extends  AppCompatActivity {
     private EditText mEditText;
     static final int REQUEST_TAKE_PHOTO = 1;
     static final int RESULT_LOAD_IMG = 2;
     String mCurrentPhotoPath;
-    private Button foto;
+    private ImageButton foto, gallerie;
     private EditText titel, beschreibung, telefon, mail;
     private ImageView iVfoto;
     private Uri uri;
+    private Toolbar toolbar;
 
     public EintragHinzufuegenFragment(){
     }
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
-        return dialog;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(R.style.AppTheme, R.style.FullDIalog);
+        setContentView(R.layout.eintrag_hinzufuegen);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbarEintrag);
+        setSupportActionBar(myToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setTitle("Anzeige hinzufügen");
+        myToolbar.setBackgroundColor(Color.parseColor("#C03D34"));
+        beschreibung = (EditText) findViewById(R.id.etBeschreibung);
+        telefon = (EditText) findViewById(R.id.ettelefon);
+        mail = (EditText) findViewById(R.id.etmail);
+        titel = (EditText) findViewById(R.id.etTitel);
+        foto = (ImageButton) findViewById(R.id.bFoto);
+        gallerie = (ImageButton) findViewById(R.id.bGallerie);
+        iVfoto = (ImageView) findViewById(R.id.iVkamera);
+        gallerie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickFromGallery();
+            }
+        });
+        foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+
+
+            }
+        });
+        //setStyle(R.style.FullDialog, R.style.FullDialog);
 
 
     }
@@ -65,13 +96,36 @@ public class EintragHinzufuegenFragment extends DialogFragment {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.eintrag_hinzufuegen, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    //@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.eintrag_hinzufuegen, container);
+        //toolbar.setTitle("Anzeige hinzufügen");
         beschreibung = (EditText) view.findViewById(R.id.etBeschreibung);
         telefon = (EditText) view.findViewById(R.id.ettelefon);
         mail = (EditText) view.findViewById(R.id.etmail);
         titel = (EditText) view.findViewById(R.id.etTitel);
-        foto = (Button) view.findViewById(R.id.bFoto);
+        foto = (ImageButton) view.findViewById(R.id.bFoto);
+        gallerie = (ImageButton) view.findViewById(R.id.bGallerie);
         iVfoto = (ImageView) view.findViewById(R.id.iVkamera);
         foto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +177,7 @@ public class EintragHinzufuegenFragment extends DialogFragment {
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
             File photoFile = null;
             try {
@@ -147,13 +201,13 @@ public class EintragHinzufuegenFragment extends DialogFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_TAKE_PHOTO) {
-            if (resultCode == getActivity().RESULT_OK) {
-            }else if (resultCode == getActivity().RESULT_CANCELED) {
+            if (resultCode == RESULT_OK) {
+            }else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the image capture
             } else {
                 // Image capture failed, advise user
             }
-        }else if (requestCode == RESULT_LOAD_IMG && resultCode == getActivity().RESULT_OK && null != data) {
+        }else if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             uri = selectedImage;
         }

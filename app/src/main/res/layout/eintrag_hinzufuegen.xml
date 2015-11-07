@@ -1,79 +1,207 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FragPar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:fitsSystemWindows="true">
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <GridLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarEintrag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
 
-            <EditText
-                android:id="@+id/etTitel"
+
+
+    </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="60dp"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="20dp">
+
+            <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_row="0"
-                android:hint="Titel" />
+                android:columnCount="2">
 
-            <EditText
-                android:id="@+id/etBeschreibung"
-                android:layout_width="match_parent"
-                android:layout_height="124dp"
-                android:layout_column="0"
-                android:layout_row="1"
-                android:ems="10"
-                android:hint="Beschreibung"
-                android:inputType="textMultiLine" />
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#CC0000"
+                    android:columnCount="3"
+                    android:padding="10dp">
 
-            <EditText
-                android:id="@+id/ettelefon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_row="2"
-                android:ems="10"
-                android:hint="Telefonnummer"
-                android:inputType="phone" />
+                    <ImageButton
+                        android:id="@+id/bFoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="1"
+                        android:layout_margin="6dp"
+                        android:layout_row="0"
+                        android:background="#C03D34"
+                        android:nestedScrollingEnabled="true"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:paddingStart="30dp"
+                        android:paddingTop="10dp"
+                        android:src="@drawable/ic_camera_alt_white_24dp" />
 
-            <EditText
-                android:id="@+id/etmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_row="3"
-                android:ems="10"
-                android:hint="Mail-Adresse"
-                android:inputType="textEmailAddress" />
+                    <ImageButton
+                        android:id="@+id/bGallerie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_margin="6dp"
+                        android:layout_row="0"
+                        android:background="#C03D34"
+                        android:nestedScrollingEnabled="true"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:paddingTop="10dp"
+                        android:src="@drawable/ic_photo_library_white_24dp" />
 
-            <Spinner
-                android:id="@+id/spstadtteil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_row="4" />
-
-            <Button
-                android:id="@+id/bFoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_row="5"
-                android:text="Foto Hinzufügen" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/iVkamera"
-                android:layout_row="6"
-                android:layout_column="0" />
-
-        </GridLayout>
-    </ScrollView>
+                </GridLayout>
 
 
-</RelativeLayout>
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:layout_column="0"
+                    android:layout_row="1" />
+
+                <EditText
+                    android:id="@+id/etTitel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="3" />
+
+
+                <TextView
+                    android:id="@+id/lTitel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="2"
+                    android:labelFor="@+id/etTitel"
+                    android:text="Was möchtest du spenden?"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:layout_column="0"
+                    android:layout_row="4" />
+
+                <TextView
+                    android:id="@+id/lBeschreibung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="5"
+                    android:labelFor="@+id/etBeschreibung"
+                    android:text="Beschreibe deine Spende"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <EditText
+                    android:id="@+id/etBeschreibung"
+                    android:layout_width="match_parent"
+                    android:layout_height="78dp"
+                    android:layout_column="0"
+                    android:layout_row="6"
+                    android:ems="10"
+                    android:inputType="textMultiLine" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="30px"
+                    android:layout_column="0"
+                    android:layout_row="7" />
+
+                <TextView
+                    android:id="@+id/tSubHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="8"
+                    android:text="Kontaktinformationen"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="#ff37474f" />
+
+                <EditText
+                    android:id="@+id/ettelefon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="11"
+                    android:ems="10"
+                    android:inputType="phone" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:layout_column="0"
+                    android:layout_row="9" />
+
+                <TextView
+                    android:id="@+id/lTelefon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="10"
+                    android:labelFor="@+id/etmail"
+                    android:text="Telefonnummer"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <Space
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:layout_column="0"
+                    android:layout_row="12" />
+
+                <TextView
+                    android:id="@+id/lMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="13"
+                    android:labelFor="@+id/etmail"
+                    android:text="Mail-Adresse"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <EditText
+                    android:id="@+id/etmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="14"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+
+                <ImageView
+                    android:id="@+id/iVkamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="17" />
+
+            </GridLayout>
+        </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
