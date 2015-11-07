@@ -1,4 +1,4 @@
-package refuhack.bitspls.de.hstuttgart15;
+package refuhack.bitspls.de.hstuttgart15.views;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import refuhack.bitspls.de.hstuttgart15.R;
 
 /**
  * Created by gin on 07.11.15.

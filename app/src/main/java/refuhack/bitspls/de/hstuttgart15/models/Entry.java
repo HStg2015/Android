@@ -1,4 +1,4 @@
-package refuhack.bitspls.de.hstuttgart15;
+package refuhack.bitspls.de.hstuttgart15.models;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package refuhack.bitspls.de.hstuttgart15;
+package refuhack.bitspls.de.hstuttgart15.models;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import refuhack.bitspls.de.hstuttgart15.R;
 
 /**
  * Created by gin on 07.11.15.
