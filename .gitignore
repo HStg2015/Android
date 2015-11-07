@@ -11,6 +11,7 @@
 # Generated files
 bin/
 gen/
+.idea/
 
 # Gradle files
 .gradle/
@@ -25,3 +26,8 @@ proguard/
 
 # Log Files
 *.log
+# Files From Merge Backup
+*.orig
+#Android.iml File
+*.iml
+.gitignore
