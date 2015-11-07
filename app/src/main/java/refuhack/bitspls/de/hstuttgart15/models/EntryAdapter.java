@@ -34,11 +34,19 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.EntryViewHol
     }
 
     @Override
-    public void onBindViewHolder(EntryViewHolder entryViewHolder, int i) {
+    public void onBindViewHolder(EntryViewHolder entryViewHolder, final int i) {
         Entry entry = eS.getList().get(i);
         entryViewHolder.vName.setText(entry.name);
         entryViewHolder.vDescription.setText(entry.description);
         Picasso.with(context).load(entry.imageUri).into(entryViewHolder.vImage);
+
+        entryViewHolder.vName.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Entry entry = eS.getList().get(i);
+                System.out.println(entry.entryId);
+            }
+        });
     }
 
     @Override
