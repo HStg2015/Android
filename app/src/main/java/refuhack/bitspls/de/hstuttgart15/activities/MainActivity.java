@@ -3,6 +3,12 @@ package refuhack.bitspls.de.hstuttgart15.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+<<<<<<< HEAD
+=======
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+>>>>>>> anzeigen
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,10 +19,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import refuhack.bitspls.de.hstuttgart15.models.Entry;
+import refuhack.bitspls.de.hstuttgart15.models.EntryAdapter;
 import refuhack.bitspls.de.hstuttgart15.R;
+import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private List<Entry> entryList;
+    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +44,13 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 actionButtonPressed();
+=======
+                Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
+                startActivity(intent);
+                //eintragfrag.show(fm, "EintragFrag");
+>>>>>>> anzeigen
             }
         });
 
@@ -41,6 +62,38 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        rv = (RecyclerView)findViewById(R.id.rv);
+        rv.setHasFixedSize(true);
+
+        GridLayoutManager glm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
+        rv.setLayoutManager(glm);
+
+        initializeData();
+        initializeAdapter();
+
+    }
+
+    private void initializeData(){
+        entryList = new ArrayList<>();
+        entryList.add(new Entry("Felix B", "Android Dev", R.drawable.max));
+        entryList.add(new Entry("Max Mustermann", "User", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+    }
+
+    private void initializeAdapter(){
+        EntryAdapter adapter = new EntryAdapter(entryList);
+        rv.setAdapter(adapter);
     }
 
     private void actionButtonPressed() {
