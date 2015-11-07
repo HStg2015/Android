@@ -38,6 +38,7 @@ import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.models.Anzeige;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
 import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
+import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
 
 /**
  * Created by Lasse on 06.11.2015.
@@ -52,6 +53,7 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
     private ImageView iVfoto;
     private Uri uri;
     private Toolbar toolbar;
+    private AnzeigenNetwork an;
 
     public EintragHinzufuegenFragment(){
     }
@@ -67,6 +69,7 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setTitle("Anzeige hinzufügen");
+        an = new AnzeigenNetwork(getApplicationContext());
         myToolbar.setBackgroundColor(Color.parseColor("#C03D34"));
         beschreibung = (EditText) findViewById(R.id.etBeschreibung);
         telefon = (EditText) findViewById(R.id.ettelefon);
@@ -156,6 +159,7 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
                         if(uri != null){
                             Entry tempAnzeige = new Entry(tTitel,tBeschreibung,tTelefon, "stadteil", tMail, uri , new DateTime());
                             EntryStorage.getInstance().addEntry(tempAnzeige);
+                            an.addEintrag(tempAnzeige, "https://morning-waters-8909.herokuapp.com/simple_offer/");
                         }else{
                             //Uri leer
                         }

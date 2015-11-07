@@ -19,6 +19,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
+import refuhack.bitspls.de.hstuttgart15.models.EntryInsta;
+import refuhack.bitspls.de.hstuttgart15.models.EntryInstaStorage;
 import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
 
 /**
@@ -37,32 +39,26 @@ public class AnzeigenInstaNetwork {
             public void onResponse(JSONArray response) {
                 try {
                     int length = response.length();
-                    Entry tempEntry;
+                    EntryInsta tempEntry;
                     JSONObject curr;
                     DateTime dt;
-                    ArrayList<Entry> entries = new ArrayList<Entry>();
+                    ArrayList<EntryInsta> entries = new ArrayList<EntryInsta>();
                     for(int i = 0; i< length; i++){
                         curr = response.getJSONObject(i);
-                        if (curr.has("create_time") && curr.has("image")) {
-                            dt = new DateTime(curr.getString("create_time"));
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"),
-                                    Uri.parse(curr.getString("image")), dt);
-                            Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
-                            entries.add(tempEntry);
-                        } else if (curr.has("image") && !curr.has("create_time")) {
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"), Uri.parse(curr.getString("image")));
-                            Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
-                            entries.add(tempEntry);
-                        } else {
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"));
-                            entries.add(tempEntry);
-                        }
+                        String idStr = curr.getString("id");
+                        String startTimeStr = curr.getString("start_time");
+                        String endTimeStr = curr.getString("end_time");
+                        String campStr = curr.getString("camp");
+
+                        int id = Integer.parseInt(idStr);
+                        int camp = Integer.parseInt(campStr);
+                        DateTime startDate = new DateTime(startTimeStr);
+                        DateTime endDate = new DateTime(endTimeStr);
+                        tempEntry = new EntryInsta(startDate, endDate,camp,id);
+                        entries.add(tempEntry);
                     }
                     if(entries.size() != 0){
-                        EntryStorage.getInstance().setList(entries);
+                        EntryInstaStorage.getInstance().setList(entries);
                     }
 
                 }catch (JSONException e) {
@@ -81,11 +77,11 @@ public class AnzeigenInstaNetwork {
 
     }
 
-    public void addEintrag(Entry e, String URL) {
+    public void addEintrag(EntryInsta e, String URL) {
         JSONObject entryJson = new JSONObject();
         try {
-            entryJson.put("title", e.getName());
-            entryJson.put("description", e.getDescription());
+            entryJson.put("id", e.getEntryId());
+            entryJson.put("start_time", e.getTimeStart());
             entryJson.put("city", e.getZipcode());
             entryJson.put("telephone", e.getPhoneNr());
             entryJson.put("email", e.getMail());
