@@ -7,7 +7,9 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import refuhack.bitspls.de.hstuttgart15.R;
 
@@ -20,6 +22,13 @@ public class ItemActivity extends AppCompatActivity {
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        String titleString = intent.getExtras().getString("title");
+        String descriptionString = intent.getExtras().getString("description");
+        TextView title = (TextView)findViewById(R.id.nameItem);
+        TextView description = (TextView)findViewById(R.id.descriptionItem);
+        description.setText(descriptionString);
+        title.setText(titleString);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
