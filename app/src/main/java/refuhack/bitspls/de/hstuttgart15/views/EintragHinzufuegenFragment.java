@@ -26,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import org.joda.time.DateTime;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -35,6 +37,7 @@ import java.util.Date;
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.models.Anzeige;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
+import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
 
 /**
  * Created by Lasse on 06.11.2015.
@@ -111,7 +114,8 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_save) {
+            save();
             return true;
         }
 
@@ -150,7 +154,8 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
                 if(tMail != null){
                     if(tTelefon != null){
                         if(uri != null){
-                            Entry tempAnzeige = new Entry(tTitel,tBeschreibung,tTelefon, "stadteil", tMail, uri);
+                            Entry tempAnzeige = new Entry(tTitel,tBeschreibung,tTelefon, "stadteil", tMail, uri , new DateTime());
+                            EntryStorage.getInstance().addEntry(tempAnzeige);
                         }else{
                             //Uri leer
                         }

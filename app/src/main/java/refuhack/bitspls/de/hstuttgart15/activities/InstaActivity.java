@@ -1,6 +1,7 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -69,8 +70,8 @@ public class InstaActivity extends AppCompatActivity
 
     private void initializeData(){
         entryList = new ArrayList<>();
-        entryList.add(new Entry("Felix B", "Android Dev", R.drawable.max));
-        entryList.add(new Entry("Max Mustermann", "User", R.drawable.max));
+        entryList.add(new Entry("Felix B", "Android Dev", "123123123", "70180","mail"));
+        entryList.add(new Entry("Felix B", "Android Dev", "123123123", "70180","mail"));
 
     }
 
