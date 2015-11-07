@@ -115,6 +115,10 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
             return true;
         }
 
+        if( id == R.id.action_save){
+            save();
+        }
+
         return super.onOptionsItemSelected(item);
     }
     //@Override
