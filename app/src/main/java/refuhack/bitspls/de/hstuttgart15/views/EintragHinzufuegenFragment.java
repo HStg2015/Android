@@ -34,6 +34,7 @@ import java.util.Date;
 
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.models.Anzeige;
+import refuhack.bitspls.de.hstuttgart15.models.Entry;
 
 /**
  * Created by Lasse on 06.11.2015.
@@ -149,7 +150,7 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
                 if(tMail != null){
                     if(tTelefon != null){
                         if(uri != null){
-                            Anzeige tempAnzeige = new Anzeige(tTitel,tBeschreibung,tTelefon, "stadteil", tMail, uri);
+                            Entry tempAnzeige = new Entry(tTitel,tBeschreibung,tTelefon, "stadteil", tMail, uri);
                         }else{
                             //Uri leer
                         }

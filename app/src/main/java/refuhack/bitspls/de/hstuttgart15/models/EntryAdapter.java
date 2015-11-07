@@ -32,7 +32,7 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.EntryViewHol
         Entry entry = entryList.get(i);
         entryViewHolder.vName.setText(entry.name);
         entryViewHolder.vDescription.setText(entry.description);
-        entryViewHolder.vImage.setImageResource(entry.photoId);
+        entryViewHolder.vImage.setImageURI(entry.imageUri);
     }
 
     @Override
