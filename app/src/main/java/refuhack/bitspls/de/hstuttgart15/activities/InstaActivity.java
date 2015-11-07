@@ -23,12 +23,13 @@ import java.util.List;
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
 import refuhack.bitspls.de.hstuttgart15.models.EntryAdapter;
+import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
+import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
 import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
 public class InstaActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private List<Entry> entryList;
     private RecyclerView rv;
 
     @Override
@@ -63,20 +64,19 @@ public class InstaActivity extends AppCompatActivity
         GridLayoutManager glm = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(glm);
 
-        initializeAdapter();
         initializeData();
+        initializeAdapter();
         navigationView.setCheckedItem(R.id.nav_InstaHelp);
     }
 
     private void initializeData() {
-        entryList = new ArrayList<>();
-        Uri path = Uri.parse("android.resource://refuhack.de.bitspls.hstuttgart15" + R.drawable.max);
-        entryList.add(new Entry("Felix B", "Android Dev", "1234", "12345", "example@example.com", path));
+        AnzeigenNetwork anzeigenNetwork = new AnzeigenNetwork(this);
+        anzeigenNetwork.getData("https://morning-waters-8909.herokuapp.com/help_time_offer/");
     }
 
 
     private void initializeAdapter(){
-        EntryAdapter adapter = new EntryAdapter(entryList);
+        EntryAdapter adapter = new EntryAdapter(EntryStorage.getInstance().getList());
         rv.setAdapter(adapter);
     }
 
