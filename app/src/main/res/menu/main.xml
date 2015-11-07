@@ -1,6 +1,42 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/filter"
+        android:title="filter"
+        android:icon="@drawable/ic_done_white_24dp"
+        app:showAsAction="always">
+
+    <group android:checkableBehavior="single">
+
+    <item android:id="@+id/category0"
+        android:title="Kleidung" >
+        <!-- "file" submenu -->
+        <menu>
+            <group android:checkableBehavior="single">
+            <item android:id="@+id/clothWomen"
+                android:title="Frauen" />
+            <item android:id="@+id/clothMen"
+                android:title="Männer" />
+            <item android:id="@+id/clothKids"
+                android:title="Kinder" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:id="@+id/category1"
+        android:title="Elektronik"/>
+
+    <item android:id="@+id/category2"
+        android:title="Spielzeug"/>
+
+    <item android:id="@+id/category3"
+        android:title="Möbel"/>
+
+    <item android:id="@+id/category4"
+        android:title="Sonstiges"/>
+
+        </group>
+
+    </item>
+
 </menu>

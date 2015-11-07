@@ -7,5 +7,6 @@
         android:icon="@drawable/ic_done_white_24dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom">
+    </item>
 </menu>
