@@ -3,12 +3,10 @@ package refuhack.bitspls.de.hstuttgart15.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-<<<<<<< HEAD
-=======
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
->>>>>>> anzeigen
+
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -44,13 +42,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD
-                actionButtonPressed();
-=======
                 Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
                 startActivity(intent);
                 //eintragfrag.show(fm, "EintragFrag");
->>>>>>> anzeigen
             }
         });
 
