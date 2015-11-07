@@ -3,6 +3,7 @@ package refuhack.bitspls.de.hstuttgart15.activities;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,8 @@ public class ItemActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_activty);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -28,7 +31,17 @@ public class ItemActivty extends AppCompatActivity {
                 callButtonPressed();
             }
         });
-
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                double faktor = appBarLayout.getTotalScrollRange()/255.;
+                if (verticalOffset>=-3||verticalOffset==0) {
+                    collapsingToolbarLayout.getBackground().setAlpha(255);
+                } else {
+                    collapsingToolbarLayout.getBackground().setAlpha((int)(verticalOffset/faktor));
+                }
+            }
+        });
     }
 
     private void callButtonPressed() {
