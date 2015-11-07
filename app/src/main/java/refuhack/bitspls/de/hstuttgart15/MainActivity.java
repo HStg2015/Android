@@ -68,6 +68,16 @@ public class MainActivity extends AppCompatActivity
         entryList.add(new Entry("Felix B", "Android Dev", R.drawable.max));
         entryList.add(new Entry("Max Mustermann", "User", R.drawable.max));
         entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
+        entryList.add(new Entry("Max", "Guy", R.drawable.max));
     }
 
     private void initializeAdapter(){
