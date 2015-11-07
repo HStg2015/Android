@@ -2,11 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Kleinazeigen" />
-        <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
+        <item android:id="@+id/nav_Kleinanzeigen" android:icon="@android:drawable/ic_menu_camera"
+            android:title="Kleinazeigen"
+            android:checked="true"/>
+        <item android:id="@+id/nav_InstaHelp" android:icon="@android:drawable/ic_menu_gallery"
             android:title="InstaHelp" />
-        <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
+        <item android:id="@+id/nav_Inventar" android:icon="@android:drawable/ic_menu_slideshow"
             android:title="Inventar" />
     </group>
 
