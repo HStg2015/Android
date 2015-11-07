@@ -9,14 +9,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65a5caa1-0a84-4f37-a8ab-4f2b4619b659" name="Default" comment="Fade Image Works">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/ItemActivty.java" afterPath="$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activitys/ItemActivty.java" />
+    <list default="true" id="65a5caa1-0a84-4f37-a8ab-4f2b4619b659" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activitys/ItemActivty.java" afterPath="$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activities/ItemActivty.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_activty.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_activty.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_item_activty.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_item_activty.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_item_activty.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_item_activty.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HStuttgart15.iws" />
@@ -121,7 +120,7 @@
         </entry>
       </file>
       <file leaf-file-name="ItemActivty.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activitys/ItemActivty.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activities/ItemActivty.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="37" column="81" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />
@@ -1906,7 +1905,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="activitys" />
+              <option name="myItemId" value="activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2203,7 +2202,13 @@
       <option name="project" value="LOCAL" />
       <updated>1446867610977</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fade Image Works">
+      <created>1446890502895</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1446890502895</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -2365,7 +2370,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activitys/ItemActivty.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activities/ItemActivty.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="81" selection-start-line="40" selection-start-column="81" selection-end-line="40" selection-end-column="81" />
@@ -2487,7 +2492,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activitys/ItemActivty.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/refuhack/bitspls/de/hstuttgart15/activities/activities/ItemActivty.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="81" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />

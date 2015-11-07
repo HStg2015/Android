@@ -1,4 +1,4 @@
-package refuhack.bitspls.de.hstuttgart15.activities.activitys;
+package refuhack.bitspls.de.hstuttgart15.activities.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
