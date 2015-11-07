@@ -28,6 +28,7 @@ import java.util.List;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
 import refuhack.bitspls.de.hstuttgart15.models.EntryAdapter;
 import refuhack.bitspls.de.hstuttgart15.R;
+import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
 import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
 import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity
                     DateTime dt = new DateTime("2015-11-07T15:01:07.078805Z");
 
 
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 //AnzeigenNetwork an = new AnzeigenNetwork(getApplicationContext());
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initializeAdapter(){
-        EntryAdapter adapter = new EntryAdapter(entryList);
+        EntryAdapter adapter = new EntryAdapter(EntryStorage.getInstance().getList());
         rv.setAdapter(adapter);
     }
 
