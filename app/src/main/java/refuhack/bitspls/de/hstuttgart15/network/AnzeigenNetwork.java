@@ -46,23 +46,23 @@ public class AnzeigenNetwork {
                     ArrayList<Entry> entries = new ArrayList<Entry>();
                     for(int i = 0; i< length; i++){
                         curr = response.getJSONObject(i);
-                        if(curr.has("create_time") && curr.has("image")) {
+                        if (curr.has("create_time") && curr.has("image")) {
                             dt = new DateTime(curr.getString("create_time"));
                             tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
                                     curr.getString("telephone"), curr.getString("city"), curr.getString("email"),
                                     Uri.parse(curr.getString("image")), dt);
                             Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
                             entries.add(tempEntry);
-                            }else if(curr.has("image") && !curr.has("create_time")) {
+                        } else if (curr.has("image") && !curr.has("create_time")) {
                             tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
                                     curr.getString("telephone"), curr.getString("city"), curr.getString("email"), Uri.parse(curr.getString("image")));
                             Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
                             entries.add(tempEntry);
-                            }else{
+                        } else {
                             tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
                                     curr.getString("telephone"), curr.getString("city"), curr.getString("email"));
                             entries.add(tempEntry);
-                            }
+                        }
                     }
                     if(entries.size() != 0){
                         EntryStorage.getInstance().setList(entries);
