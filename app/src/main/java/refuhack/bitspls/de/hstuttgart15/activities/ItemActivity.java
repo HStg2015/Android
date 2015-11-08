@@ -1,6 +1,9 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -12,7 +15,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
 import refuhack.bitspls.de.hstuttgart15.R;
+import refuhack.bitspls.de.hstuttgart15.network.VolleyHandler;
 
 public class ItemActivity extends AppCompatActivity {
     @Override
@@ -27,11 +34,31 @@ public class ItemActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String titleString = intent.getExtras().getString("title");
         String descriptionString = intent.getExtras().getString("description");
-        String pictureUri = intent.getExtras().getString("Picture");
+        Uri pictureUri = (Uri)intent.getExtras().get("Picture");
 
         TextView title = (TextView)findViewById(R.id.nameItem);
         TextView description = (TextView)findViewById(R.id.descriptionItem);
-        CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
+
+        Target target = new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                final CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
+                BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
+                ctl.setBackground(bitmapDrawable);
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                //empty
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                //empty
+            }
+        };
+
+        Picasso.with(this).load(pictureUri).into(target);
 
         description.setText(descriptionString);
         title.setText(titleString);

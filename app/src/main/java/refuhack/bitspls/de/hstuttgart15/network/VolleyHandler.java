@@ -86,5 +86,10 @@ public class VolleyHandler {
         }
     }
 
+    public Context getContext() {
+        return context;
+    }
+
+
 
 }
