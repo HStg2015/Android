@@ -52,9 +52,6 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
                 startActivity(intent);
-                //eintragfrag.show(fm, "EintragFrag");
-                //AnzeigenNetwork an = new AnzeigenNetwork(getApplicationContext());
-                //an.getData("https://morning-waters-8909.herokuapp.com/simple_offer/");
 
             }
         });
