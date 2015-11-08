@@ -52,6 +52,7 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.EntryViewHol
                 Intent intent = new Intent(context, ItemActivity.class);
                 intent.putExtra("description", entry.getDescription());
                 intent.putExtra("title", entry.getName());
+                intent.putExtra("Picture", entry.getImageUri());
                 context.startActivity(intent);
             }
         });
