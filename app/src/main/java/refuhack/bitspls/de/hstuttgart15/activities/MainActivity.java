@@ -171,9 +171,9 @@ public class MainActivity extends AppCompatActivity
         });
 
         // Generate an HTML document on the fly:
-        String html = "<html><body><h3>"+e.getName()+"</h3> <br/> <h4>" + e.getDescription()+
-                    "</h4><br/><br/><p>Stadtteil: "+e.getZipcode()+"</p><br/><p>Telefonnummer: "
-                +e.getPhoneNr()+"</p><br/><p>Mail-Adresse: "+ e.getMail()+" </body></html>";
+        String html = "<html><body><h3>"+e.getName()+"</h3> <h4>" + e.getDescription()+
+                    "</h4><p>Stadtteil: "+e.getZipcode()+"</p><p>Telefonnummer: "
+                +e.getPhoneNr()+"</p><p>Mail-Adresse: "+ e.getMail()+" </body></html>";
         webView.loadDataWithBaseURL(null, html, "text/HTML", "UTF-8", null);
 
         // Keep a reference to WebView object until you pass the PrintDocumentAdapter
