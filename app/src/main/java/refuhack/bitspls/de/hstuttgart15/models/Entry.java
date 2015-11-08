@@ -1,55 +1,50 @@
 package refuhack.bitspls.de.hstuttgart15.models;
 
 import android.net.Uri;
+import android.util.Log;
 
 import org.joda.time.DateTime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by gin on 07.11.15.
  */
-public class Entry {
-    protected String name, description, phoneNr, zipcode, mail;
-    protected Uri imageUri;
-    protected int entryId;
-    protected DateTime date;
+public class Entry extends RealmObject {
+    private String name, description, phoneNr, zipcode, mail, textUri, textDate;
+    private int entryId;
 
-    public Entry(String name, String description, String phoneNr, String zipcode, String mail) {
-        this.name = name;
-        this.description = description;
-        this.phoneNr = phoneNr;
-        this.zipcode = zipcode;
-        this.mail = mail;
-    }
-    public Entry(String name, String description, String phoneNr, String zipcode, String mail, DateTime date) {
-        this.name = name;
-        this.description = description;
-        this.phoneNr = phoneNr;
-        this.zipcode = zipcode;
-        this.mail = mail;
-        this.date = date;
-        //this.imageUri = imageUri;
-    }
-    public Entry(String name, String description, String phoneNr, String zipcode, String mail, Uri imageUri, DateTime date) {
-        this.name = name;
-        this.description = description;
-        this.phoneNr = phoneNr;
-        this.zipcode = zipcode;
-        this.mail = mail;
-        this.imageUri = imageUri;
-        this.date = date;
+    public String getTextUri() {
+        return textUri;
     }
 
-    public Entry(String name, String description, String phoneNr, String zipcode, String mail, Uri imageUri) {
-        this.name = name;
-        this.description = description;
-        this.phoneNr = phoneNr;
-        this.zipcode = zipcode;
-        this.mail = mail;
-        this.imageUri = imageUri;
+    public void setTextUri(String textUri) {
+        this.textUri = textUri;
+    }
+
+    @Ignore
+    private Uri imageUri;
+
+    @Ignore
+    private DateTime date;
+
+
+
+
+    public String getTextDate() {
+        return textDate;
+    }
+
+    public void setTextDate(String textDate) {
+        this.textDate = textDate;
     }
 
     public String getName() { return name; }
@@ -64,7 +59,13 @@ public class Entry {
 
     public int getEntryId() { return entryId; }
 
-    public Uri getImageUri() { return imageUri; }
+    public Uri getImageUri() {
+
+        if(textUri != null){
+            return Uri.parse(textUri);
+        }
+        return null;
+    }
 
     public void setName(String name) { this.name = name; }
 
@@ -78,6 +79,21 @@ public class Entry {
 
     public void setEntryId(int entryId) { this.entryId = entryId; }
 
-    public void setImageUri(Uri imageUri) { this.imageUri = imageUri; }
+    public void setImageUri(Uri imageUri) {
+        this.imageUri = imageUri;
+        setTextUri(imageUri.toString());
+    }
+
+    public DateTime getDate() {
+        if(textDate != null)
+            return DateTime.parse(textDate);
+
+        return null;
+    }
+
+    public void setDate(DateTime date) {
+        this.date = date;
+        setTextDate(date.toString());
+    }
 }
 

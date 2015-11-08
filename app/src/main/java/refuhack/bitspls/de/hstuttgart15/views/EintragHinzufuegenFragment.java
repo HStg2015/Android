@@ -26,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import org.joda.time.DateTime;
 
 import java.io.File;
@@ -34,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.realm.Realm;
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.models.Anzeige;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
@@ -157,9 +160,22 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
                 if(tMail != null){
                     if(tTelefon != null){
                         if(uri != null){
-                            Entry tempAnzeige = new Entry(tTitel,tBeschreibung,tTelefon, "stadteil", tMail, uri , new DateTime());
-                            EntryStorage.getInstance().addEntry(tempAnzeige);
-                            an.addEintrag(tempAnzeige, "https://morning-waters-8909.herokuapp.com/simple_offer/");
+                            Realm realm = Realm.getInstance(getApplicationContext());
+                            realm.beginTransaction();
+                            DateTime dt = new DateTime();
+                            Entry tempEntry;
+                            tempEntry = realm.createObject(Entry.class);
+                            tempEntry.setDescription(tBeschreibung);
+                            tempEntry.setName(tTitel);
+                            tempEntry.setPhoneNr(tTelefon);
+                            //tempEntry.setZipcode();
+                            tempEntry.setMail(tMail);
+                            tempEntry.setDate(dt);
+                            tempEntry.setImageUri(uri);
+                            realm.commitTransaction();
+                            Picasso.with(this).load(uri).fetch();
+                            EntryStorage.getInstance().addEntry(tempEntry);
+                            an.addEintrag(tempEntry, "https://morning-waters-8909.herokuapp.com/simple_offer/");
                         }else{
                             //Uri leer
                         }

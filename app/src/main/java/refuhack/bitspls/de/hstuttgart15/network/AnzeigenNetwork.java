@@ -20,6 +20,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.realm.Realm;
 import refuhack.bitspls.de.hstuttgart15.models.Anzeige;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
 import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
@@ -39,35 +40,61 @@ public class AnzeigenNetwork {
             @Override
             public void onResponse(JSONArray response) {
                 try {
+                    Realm realm = Realm.getInstance(context.getApplicationContext());
                     int length = response.length();
+
                     Entry tempEntry;
                     JSONObject curr;
                     DateTime dt;
                     ArrayList<Entry> entries = new ArrayList<Entry>();
-                    for(int i = 0; i< length; i++){
+
+                    for(int i = 0; i< response.length(); i++){
+
                         curr = response.getJSONObject(i);
                         if (curr.has("create_time") && curr.has("image")) {
+                            realm.beginTransaction();
                             dt = new DateTime(curr.getString("create_time"));
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"),
-                                    Uri.parse(curr.getString("image")), dt);
+                            tempEntry = realm.createObject(Entry.class);
+                            tempEntry.setDescription(curr.getString("description"));
+                            tempEntry.setName(curr.getString("title"));
+                            tempEntry.setPhoneNr(curr.getString("telephone"));
+                            tempEntry.setZipcode(curr.getString("city"));
+                            //tempEntry.setMail(curr.getString("mail"));
+                            tempEntry.setDate(dt);
+                            tempEntry.setImageUri(Uri.parse(curr.getString("image")));
+                            realm.commitTransaction();
                             Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
                             entries.add(tempEntry);
                         } else if (curr.has("image") && !curr.has("create_time")) {
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"), Uri.parse(curr.getString("image")));
+                            realm.beginTransaction();
+                            tempEntry = realm.createObject(Entry.class);
+                            tempEntry.setDescription(curr.getString("description"));
+                            tempEntry.setName(curr.getString("title"));
+                            tempEntry.setPhoneNr(curr.getString("telephone"));
+                            tempEntry.setZipcode(curr.getString("city"));
+                            tempEntry.setMail(curr.getString("mail"));
+                            tempEntry.setImageUri(Uri.parse(curr.getString("image")));
+                            realm.commitTransaction();
                             Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
                             entries.add(tempEntry);
+
                         } else {
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"));
+                            realm.beginTransaction();
+                            tempEntry = realm.createObject(Entry.class);
+                            tempEntry.setDescription(curr.getString("description"));
+                            tempEntry.setName(curr.getString("title"));
+                            tempEntry.setPhoneNr(curr.getString("telephone"));
+                            tempEntry.setZipcode(curr.getString("city"));
+                            tempEntry.setMail(curr.getString("mail"));
                             entries.add(tempEntry);
+                            realm.commitTransaction();
                         }
+
                     }
+
                     if(entries.size() != 0){
                         EntryStorage.getInstance().setList(entries);
                     }
-
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
