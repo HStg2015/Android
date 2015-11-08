@@ -2,6 +2,7 @@ package refuhack.bitspls.de.hstuttgart15.network;
 
 import android.content.Context;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
@@ -41,7 +42,10 @@ public class CategoryNetwork {
         Response.ErrorListener errorHandler = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
+                NetworkResponse response = error.networkResponse;
+                if (response != null && response.data != null)
+                    VolleyLog.e("Error: %s",  new String(response.data));
+                VolleyLog.e("Error: %s", error.getMessage());
             }
         };
 

@@ -4,11 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.MultipartBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
 import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
@@ -16,6 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -79,7 +87,10 @@ public class AnzeigenNetwork {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
+                NetworkResponse response = error.networkResponse;
+                if (response != null && response.data != null)
+                    VolleyLog.e("Error: %s",  new String(response.data));
+                VolleyLog.e("Error: %s", error.getMessage());
             }
         });
 
@@ -89,18 +100,38 @@ public class AnzeigenNetwork {
     public void addEintrag(Entry e, String URL) {
         JSONObject entryJson = new JSONObject();
         try {
-            entryJson.put("category", e.getCategoryId());
+            /*entryJson.put("category", e.getCategoryId());
             entryJson.put("title", e.getName());
             entryJson.put("description", e.getDescription());
             entryJson.put("city", e.getZipcode().toString());
-            //entryJson.put("image", "https://morning-waters-8909.herokuapp.com/files/download/?name=api.UploadedFile%2Fbytes%2Ffilename%2Fmimetype%2Fgeschirrspueler-bosch-auto-foto-bild-101636103.jpg");
+            entryJson.put("image", "");
             entryJson.put("telephone", e.getPhoneNr());
             entryJson.put("email", e.getMail());
-            entryJson.put("category", e.getCategoryId());
-            entryJson.put("create_time", e.getDate().toString());
+            entryJson.put("category", e.getCategoryId());*/
+            //entryJson.put("create_time", e.getDate().toString());
 
+            File file = new File(e.getImageUri().getPath());
 
-            JsonObjectRequest req = new JsonObjectRequest(URL, entryJson,
+            RequestBody requestBody = new MultipartBuilder()
+                    .type(MultipartBuilder.FORM)
+                    .addFormDataPart("image", file.getName(),
+                            RequestBody.create(MediaType.parse("image/png"), file))
+                    .addFormDataPart("category", String.valueOf(e.getCategoryId()))
+                    .addFormDataPart("title", e.getName())
+                    .addFormDataPart("description", e.getDescription())
+                    .addFormDataPart("city", e.getZipcode())
+                    .addFormDataPart("telephone", e.getPhoneNr())
+                    .addFormDataPart("email", e.getMail())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(URL)
+                    .post(requestBody)
+                    .build();
+        OkHttpClient client = new OkHttpClient();
+        com.squareup.okhttp.Response response = client.newCall(request).execute();
+
+            /*JsonObjectRequest req = new JsonObjectRequest(URL, entryJson,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -113,14 +144,16 @@ public class AnzeigenNetwork {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    VolleyLog.e("Error: ", error.getMessage());
+                    NetworkResponse response = error.networkResponse;
+                    if (response != null && response.data != null)
+                        VolleyLog.e("Error: %s",  new String(response.data));
+                    VolleyLog.e("Error: %s", error.getMessage());
                 }
             });
-            VolleyHandler.getInstance(context).addToRequestQueue(req);
-        } catch (JSONException Exc) {
+            VolleyHandler.getInstance(context).addToRequestQueue(req);*/
+        } catch (IOException Exc) {
             Log.e("AnzeigenNetwork", "ERROR WHILE SENDING ANZEIGE: " + Exc.toString());
         }
-
     }
 
  /*   public void uploadAllEntries(){
