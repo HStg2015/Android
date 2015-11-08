@@ -1,5 +1,6 @@
 package refuhack.bitspls.de.hstuttgart15.models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,5 +32,15 @@ public class CategoryStorage {
 
     public Category getById(int id) {
         return categories.get(id);
+    }
+
+    public int getCount(){return categories.size();}
+
+    public ArrayList<String> getArrayList(){
+        ArrayList<String> al = new ArrayList<String>();
+        for(int i = 1; i== categories.size(); i++){
+            al.add(categories.get(i).getTitle());
+        }
+        return al;
     }
 }

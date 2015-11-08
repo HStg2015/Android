@@ -9,4 +9,12 @@
     <string name="large_text">
         Beschreibungs Text
     </string>
+
+    <string-array name="categories">
+        <item>Elektronik</item>
+        <item>Spielzeuge</item>
+        <item>Kleidung</item>
+        <item>Möbel</item>
+        <item>Sonstiges</item>
+    </string-array>
 </resources>
