@@ -49,8 +49,11 @@ public class AnzeigenNetwork {
 
                         Entry e = new Entry();
 
-                        // TODO: Why is create_time optional?
+                        e.setCategoryId(curr.getInt("category"));
+                        e.setName(curr.getString("title"));
+                        e.setDescription(curr.getString("description"));
 
+                        // TODO: Why is create_time optional?
                         if (curr.has("create_time"))
                             e.setDate(new DateTime(curr.getString("create_time")));
 
@@ -59,17 +62,14 @@ public class AnzeigenNetwork {
                             Picasso.with(context).load(e.getImageUri()).fetch();
                         }
 
-                        e.setName(curr.getString("title"));
-                        e.setDescription(curr.getString("description"));
                         e.setZipcode(curr.getString("city"));
-
                         e.setMail(curr.getString("email"));
                         e.setPhoneNr(curr.getString("telephone"));
 
                         entries.add(e);
                     }
 
-                    if(!entries.isEmpty())
+                    if (!entries.isEmpty())
                         EntryStorage.getInstance().setList(entries);
 
                 }catch (JSONException e) {
