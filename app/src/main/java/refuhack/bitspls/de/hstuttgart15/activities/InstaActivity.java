@@ -106,7 +106,5 @@ public class InstaActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-        Intent intent = new Intent(InstaActivity.this, EventActivity.class);
-        startActivity(intent);
     }
 }
