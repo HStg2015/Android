@@ -31,7 +31,7 @@ public class ItemActivity extends AppCompatActivity {
 
         TextView title = (TextView)findViewById(R.id.nameItem);
         TextView description = (TextView)findViewById(R.id.descriptionItem);
-        CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout_Event);
+        CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
 
         description.setText(descriptionString);
         title.setText(titleString);
