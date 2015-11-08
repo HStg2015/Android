@@ -7,6 +7,7 @@ import android.os.Handler;
 
 
 import refuhack.bitspls.de.hstuttgart15.R;
+import refuhack.bitspls.de.hstuttgart15.network.AnzeigenInstaNetwork;
 import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
 
 /**
@@ -23,6 +24,8 @@ public class Splashscreen extends Activity {
         setContentView(R.layout.splashscreen);
         AnzeigenNetwork anzeigenNetwork = new AnzeigenNetwork(this);
         anzeigenNetwork.getData("https://morning-waters-8909.herokuapp.com/simple_offer/");
+        AnzeigenInstaNetwork anzeigenInstaNetwork = new AnzeigenInstaNetwork(this);
+        anzeigenInstaNetwork.getData("https://morning-waters-8909.herokuapp.com/help_time_search/");
             new Handler().postDelayed(new Runnable() {
 
             /*
@@ -42,7 +45,7 @@ public class Splashscreen extends Activity {
                 }
             }
 
-                    , SPLASH_TIME_OUT);
+                   , SPLASH_TIME_OUT);
         }
 
     }
