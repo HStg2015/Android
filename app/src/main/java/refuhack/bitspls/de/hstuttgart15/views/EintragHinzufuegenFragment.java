@@ -161,8 +161,8 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
         String tTelefon = telefon.getText().toString();
         String tMail = mail.getText().toString();
         String tPLZ = plz.getText().toString();
-
-        if (tBeschreibung == null || tTitel == null || tMail == null || tTelefon == null || uri == null) {
+        int categoryId =(int) CatSpinner.getSelectedItemId() +1;
+           if (tBeschreibung == null || tTitel == null || tMail == null || tTelefon == null || uri == null) {
             if (tBeschreibung == null) {
                 Toast.makeText(getApplicationContext(), "Beschreibung fehlt, bitte nachtragen :)", Toast.LENGTH_SHORT).show();
                 return;
@@ -182,7 +182,7 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
         }
 
         Entry e = new Entry();
-        e.setCategoryId(1);
+        e.setCategoryId(categoryId);
         e.setName(tTitel);
         e.setDescription(tBeschreibung);
         e.setPhoneNr(tTelefon);

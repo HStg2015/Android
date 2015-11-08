@@ -92,9 +92,13 @@ public class AnzeigenNetwork {
             entryJson.put("category", e.getCategoryId());
             entryJson.put("title", e.getName());
             entryJson.put("description", e.getDescription());
-            entryJson.put("city", e.getZipcode());
+            entryJson.put("city", e.getZipcode().toString());
+            //entryJson.put("image", "https://morning-waters-8909.herokuapp.com/files/download/?name=api.UploadedFile%2Fbytes%2Ffilename%2Fmimetype%2Fgeschirrspueler-bosch-auto-foto-bild-101636103.jpg");
             entryJson.put("telephone", e.getPhoneNr());
             entryJson.put("email", e.getMail());
+            entryJson.put("category", e.getCategoryId());
+            entryJson.put("create_time", e.getDate().toString());
+
 
             JsonObjectRequest req = new JsonObjectRequest(URL, entryJson,
                     new Response.Listener<JSONObject>() {
