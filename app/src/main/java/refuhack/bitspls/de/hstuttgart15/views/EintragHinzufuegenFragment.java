@@ -147,37 +147,26 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
     }
 
     private void save(){
-        String tBeschreibung, tTitel, tTelefon, tMail;
-        tBeschreibung = beschreibung.getText().toString();
-        tTitel = titel.getText().toString();
-        tTelefon = telefon.getText().toString();
-        tMail = mail.getText().toString();
-        if(tBeschreibung != null){
-            if(tTitel != null){
-                if(tMail != null){
-                    if(tTelefon != null){
-                        if(uri != null){
-                            Entry tempAnzeige = new Entry(tTitel,tBeschreibung,tTelefon, "stadteil", tMail, uri , new DateTime());
-                            EntryStorage.getInstance().addEntry(tempAnzeige);
-                            an.addEintrag(tempAnzeige, "https://morning-waters-8909.herokuapp.com/simple_offer/");
-                        }else{
-                            //Uri leer
-                        }
-                    }else{
-                        //Telefon leer
-                    }
-                }else{
-                    //Mail leer
-                }
-            }else{
-              //Titel leer
-            }
-        }else{
-            //Beschreibung leer
-        }
+        String tBeschreibung = beschreibung.getText().toString();
+        String tTitel = titel.getText().toString();
+        String tTelefon = telefon.getText().toString();
+        String tMail = mail.getText().toString();
 
+        if (tBeschreibung == null || tTitel == null || tMail == null || tTelefon == null || uri == null)
+            return;
 
+        Entry e = new Entry();
+        e.setName(tTitel);
+        e.setDescription(tBeschreibung);
+        e.setPhoneNr(tTelefon);
+        e.setZipcode("stadteil"); // TODO: That doesn't seem correct
+        e.setMail(tMail);
+        e.setImageUri(uri);
+        e.setDate(new DateTime());
+        EntryStorage.getInstance().addEntry(e);
+        an.addEintrag(e, "https://morning-waters-8909.herokuapp.com/simple_offer/");
     }
+
     private void pickFromGallery(){
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

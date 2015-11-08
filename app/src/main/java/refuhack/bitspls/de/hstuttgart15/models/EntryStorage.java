@@ -2,6 +2,8 @@ package refuhack.bitspls.de.hstuttgart15.models;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Lasse on 07.11.2015.
@@ -49,5 +51,13 @@ public class EntryStorage {
 
     }
 
+    public List<Entry> getEntriesByCategory(int categoryId) {
+        ArrayList<Entry> filtered = new ArrayList<>();
+        for (Entry e : entries) {
+            if (e.getCategoryId() == categoryId)
+                filtered.add(e);
+        }
 
+        return filtered;
+    }
 }

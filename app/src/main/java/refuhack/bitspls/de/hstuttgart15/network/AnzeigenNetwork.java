@@ -46,27 +46,31 @@ public class AnzeigenNetwork {
                     ArrayList<Entry> entries = new ArrayList<Entry>();
                     for(int i = 0; i< length; i++){
                         curr = response.getJSONObject(i);
-                        if (curr.has("create_time") && curr.has("image")) {
-                            dt = new DateTime(curr.getString("create_time"));
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"),
-                                    Uri.parse(curr.getString("image")), dt);
-                            Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
-                            entries.add(tempEntry);
-                        } else if (curr.has("image") && !curr.has("create_time")) {
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"), Uri.parse(curr.getString("image")));
-                            Picasso.with(context).load(Uri.parse(curr.getString("image"))).fetch();
-                            entries.add(tempEntry);
-                        } else {
-                            tempEntry = new Entry(curr.getString("title"), curr.getString("description"),
-                                    curr.getString("telephone"), curr.getString("city"), curr.getString("email"));
-                            entries.add(tempEntry);
+
+                        Entry e = new Entry();
+
+                        // TODO: Why is create_time optional?
+
+                        if (curr.has("create_time"))
+                            e.setDate(new DateTime(curr.getString("create_time")));
+
+                        if (curr.has("image")) {
+                            e.setImageUri(Uri.parse(curr.getString("image")));
+                            Picasso.with(context).load(e.getImageUri()).fetch();
                         }
+
+                        e.setName(curr.getString("title"));
+                        e.setDescription(curr.getString("description"));
+                        e.setZipcode(curr.getString("city"));
+
+                        e.setMail(curr.getString("email"));
+                        e.setPhoneNr(curr.getString("telephone"));
+
+                        entries.add(e);
                     }
-                    if(entries.size() != 0){
+
+                    if(!entries.isEmpty())
                         EntryStorage.getInstance().setList(entries);
-                    }
 
                 }catch (JSONException e) {
                     e.printStackTrace();
@@ -79,9 +83,7 @@ public class AnzeigenNetwork {
             }
         });
 
-
         VolleyHandler.getInstance(context).addToRequestQueue(req);
-
     }
 
     public void addEintrag(Entry e, String URL) {
