@@ -60,6 +60,8 @@ public class ItemActivity extends AppCompatActivity {
 
         Picasso.with(this).load(pictureUri).into(target);
 
+        setTitle(titleString);
+
         description.setText(descriptionString);
         title.setText(titleString);
 
