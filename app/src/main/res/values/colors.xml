@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#FEA623</color>
     <color name="colorAccent">#FEA623</color>
     <color name="black">#FFFFFF</color>
+    <color name="shadow_color">#7f7f7f</color>
 
 </resources>
