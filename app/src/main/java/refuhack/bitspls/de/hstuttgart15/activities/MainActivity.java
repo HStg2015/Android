@@ -66,10 +66,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
-                //startActivity(intent);
-                //doPhotoPrint();
-                doWebViewPrint();
+                Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
+                startActivity(intent);
             }
         });
 
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity
 
     private WebView mWebView;
 
-    private void doWebViewPrint() {
+    private void doWebViewPrint(Entry e) {
         // Create a WebView object specifically for printing
         WebView webView = new WebView(this);
         webView.setWebViewClient(new WebViewClient() {
@@ -173,14 +171,9 @@ public class MainActivity extends AppCompatActivity
         });
 
         // Generate an HTML document on the fly:
-        String html = "<html><body>";
-        ArrayList<Entry> entries = EntryStorage.getInstance().getList();
-        for(int i = 0; i< 2; i++){
-            Entry curr = entries.get(i);
-            html = html+"<h3>"+curr.getName()+"</h3> <br/> <h4>" + curr.getDescription()+
-                    "</h4><br/><br/><p>Stadtteil:"+curr.getZipcode()+"</p><br/><br/><br/><br/><br/>";
-        }
-        html = html + "</body></html>";
+        String html = "<html><body><h3>"+e.getName()+"</h3> <br/> <h4>" + e.getDescription()+
+                    "</h4><br/><br/><p>Stadtteil: "+e.getZipcode()+"</p><br/><p>Telefonnummer: "
+                +e.getPhoneNr()+"</p><br/><p>Mail-Adresse: "+ e.getMail()+" <br/><br/><br/></body></html>";
         webView.loadDataWithBaseURL(null, html, "text/HTML", "UTF-8", null);
 
         // Keep a reference to WebView object until you pass the PrintDocumentAdapter

@@ -61,7 +61,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="18dp"
             android:onClick="onClick"
-            android:text="Drucken"/>
+            android:text="Drucken"
+            android:background="#FEA623" />
 
 
     </RelativeLayout>

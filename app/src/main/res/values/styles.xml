@@ -21,12 +21,22 @@
         <item name="colorPrimary">#C03D34</item>
         <item name="colorAccent">#C03D34</item>
     </style>
-
-    <style name="DialogAnimation">
+    <style name="Splash" parent="AppTheme.NoActionBar">
         <item name="android:windowNoTitle">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+    <style name="DialogAnimation">
+        <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#FEA623</item>
     </style>
 </resources>
