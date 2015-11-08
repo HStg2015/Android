@@ -1,7 +1,5 @@
 package refuhack.bitspls.de.hstuttgart15.models;
 
-import android.net.Uri;
-
 import org.joda.time.DateTime;
 
 /**
@@ -9,12 +7,13 @@ import org.joda.time.DateTime;
  */
 public class EntryInsta {
     private DateTime startDate, endDate;
-    private int campID, id;
+    private int id;
+    private String campInfo;
 
-    public EntryInsta(DateTime startDate, DateTime endDate, int campID, int id) {
+    public EntryInsta(DateTime startDate, DateTime endDate, String campInfo, int id) {
        this.startDate = startDate;
         this.endDate = endDate;
-        this.campID = campID;
+        this.campInfo = campInfo;
         this.id = id;
     }
 
@@ -26,8 +25,8 @@ public class EntryInsta {
         return endDate;
     }
 
-    public int getRefugeeCamp() {
-        return campID;
+    public String getRefugeeCamp() {
+        return campInfo;
     }
 
     public int getEntryId() {
@@ -42,8 +41,8 @@ public class EntryInsta {
         this.endDate = timeEnd;
     }
 
-    public void setRefugeeCamp(int refugeeCamp) {
-        this.campID = refugeeCamp;
+    public void setRefugeeCamp(String refugeeCamp) {
+        this.campInfo = refugeeCamp;
     }
 
     public void setEntryId(int entryId) {

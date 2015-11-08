@@ -28,7 +28,7 @@ import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
  */
 public class AnzeigenInstaNetwork {
     private Context context;
-
+    private ArrayList<EntryInsta> entries;
     public AnzeigenInstaNetwork(Context c) {
         this.context = c;
     }
@@ -42,7 +42,7 @@ public class AnzeigenInstaNetwork {
                     EntryInsta tempEntry;
                     JSONObject curr;
                     DateTime dt;
-                    ArrayList<EntryInsta> entries = new ArrayList<EntryInsta>();
+                    entries = new ArrayList<EntryInsta>();
                     for(int i = 0; i< length; i++){
                         curr = response.getJSONObject(i);
                         String idStr = curr.getString("id");
@@ -54,7 +54,9 @@ public class AnzeigenInstaNetwork {
                         int camp = Integer.parseInt(campStr);
                         DateTime startDate = new DateTime(startTimeStr);
                         DateTime endDate = new DateTime(endTimeStr);
-                        tempEntry = new EntryInsta(startDate, endDate,camp,id);
+                        String campInfo = getDataCamp(camp);
+                        System.out.println(id+":"+campInfo+".....................................................................");
+                        tempEntry = new EntryInsta(startDate, endDate,campInfo,id);
                         entries.add(tempEntry);
                     }
                     if(entries.size() != 0){
@@ -75,6 +77,55 @@ public class AnzeigenInstaNetwork {
 
         VolleyHandler.getInstance(context).addToRequestQueue(req);
 
+    }
+
+    private String getDataCamp(final int campID){
+        String result="";
+        JsonArrayRequest req = new JsonArrayRequest("https://morning-waters-8909.herokuapp.com/refugee_camp/", new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    int length = response.length();
+
+                    JSONObject curr;
+                    for(int i = 0; i< length; i++){
+                        curr = response.getJSONObject(i);
+                        System.out.println("Länge: "+length+" CampID: "+campID + " City: "+curr.get("city")+ " IfCheck: "+(curr.getInt("id")==campID));
+                        if(curr.getInt("id")==campID){
+                            String cityStr = curr.getString("city");
+                            String postcodeStr = curr.getString("postcode");
+                            String streetStr = curr.getString("street");
+                            String streetNStr = curr.getString("streetnumber");
+                            StringHandler.saveString(postcodeStr+" "+cityStr+"\n"+streetStr+" "+streetNStr+"\n");
+                            System.out.println("Länge: "+StringHandler.getString());
+                        }
+                    }
+
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+
+
+        VolleyHandler.getInstance(context).addToRequestQueue(req);
+        return StringHandler.getString();
+    }
+
+    public static class StringHandler{
+        static String buffer;
+        public static void saveString(String x){
+            buffer = x;
+        }
+        public static String getString(){
+            return buffer;
+        }
     }
 
     public void addEintrag(EntryInsta e, String URL) {
