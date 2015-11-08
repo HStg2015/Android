@@ -1,6 +1,7 @@
 package refuhack.bitspls.de.hstuttgart15.models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import refuhack.bitspls.de.hstuttgart15.R;
+import refuhack.bitspls.de.hstuttgart15.activities.EventActivity;
+import refuhack.bitspls.de.hstuttgart15.activities.ItemActivity;
 
 /**
  * Created by gin on 07.11.15.
@@ -31,10 +34,23 @@ public class EntryInstaAdapter extends RecyclerView.Adapter<EntryInstaAdapter.En
     }
 
     @Override
-    public void onBindViewHolder(EntryViewHolder entryViewHolder, int i) {
+    public void onBindViewHolder(EntryViewHolder entryViewHolder, final int i) {
         System.out.println("Nearly");
         EntryInsta entry = eS.getList().get(i);
         entryViewHolder.vName.setText("Flüchtlings Organisation "+String.valueOf(entry.getRefugeeCamp()));
+
+        entryViewHolder.vName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EntryInsta entry = eS.getList().get(i);
+
+                Intent intent = new Intent(context, EventActivity.class);
+                intent.putExtra("RefugeeCamp", entry.getRefugeeCamp());
+                intent.putExtra("TimeStart", entry.getTimeStart());
+                intent.putExtra("TimeEnd", entry.getTimeEnd());
+                context.startActivity(intent);
+            }
+        });
 
     }
 

@@ -19,6 +19,7 @@ import android.view.View;
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.models.EntryInstaAdapter;
 import refuhack.bitspls.de.hstuttgart15.network.AnzeigenInstaNetwork;
+import refuhack.bitspls.de.hstuttgart15.views.EintragHinzufuegenFragment;
 
 public class InstaActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,7 +37,7 @@ public class InstaActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EventActivity.class);
+                Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
                 startActivity(intent);
                 //eintragfrag.show(fm, "EintragFrag");
             }
@@ -105,5 +106,7 @@ public class InstaActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        Intent intent = new Intent(InstaActivity.this, EventActivity.class);
+        startActivity(intent);
     }
 }
