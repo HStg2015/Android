@@ -89,12 +89,12 @@ public class AnzeigenNetwork {
     public void addEintrag(Entry e, String URL) {
         JSONObject entryJson = new JSONObject();
         try {
+            entryJson.put("category", e.getCategoryId());
             entryJson.put("title", e.getName());
             entryJson.put("description", e.getDescription());
             entryJson.put("city", e.getZipcode());
             entryJson.put("telephone", e.getPhoneNr());
             entryJson.put("email", e.getMail());
-
 
             JsonObjectRequest req = new JsonObjectRequest(URL, entryJson,
                     new Response.Listener<JSONObject>() {
