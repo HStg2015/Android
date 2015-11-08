@@ -1,6 +1,7 @@
 package refuhack.bitspls.de.hstuttgart15.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -26,9 +27,11 @@ public class ItemActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String titleString = intent.getExtras().getString("title");
         String descriptionString = intent.getExtras().getString("description");
+        String pictureUri = intent.getExtras().getString("Picture");
 
         TextView title = (TextView)findViewById(R.id.nameItem);
         TextView description = (TextView)findViewById(R.id.descriptionItem);
+        CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout_Event);
 
         description.setText(descriptionString);
         title.setText(titleString);
