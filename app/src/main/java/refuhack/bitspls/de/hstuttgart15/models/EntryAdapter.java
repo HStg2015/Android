@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import refuhack.bitspls.de.hstuttgart15.R;
 import refuhack.bitspls.de.hstuttgart15.activities.ItemActivity;
+import refuhack.bitspls.de.hstuttgart15.activities.MainActivity;
 
 
 /**
@@ -46,7 +47,7 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.EntryViewHol
 
         entryViewHolder.vName.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Entry entry = eS.getList().get(i);
 
                 Intent intent = new Intent(context, ItemActivity.class);
