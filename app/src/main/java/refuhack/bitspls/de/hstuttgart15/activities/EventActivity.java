@@ -27,14 +27,23 @@ public class EventActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String titleString = intent.getExtras().getString("title");
         String descriptionString = intent.getExtras().getString("description");
-        String pictureUri = intent.getExtras().getString("Picture");
+        Uri pictureUri = (Uri)intent.getExtras().get("Picture");
+        String phoneNumberString = intent.getExtras().getString("Phonenumber");
+        String zipCodeString = intent.getExtras().getString("Zipcode");
+        String mailString = intent.getExtras().getString("Mail");
 
-        TextView title = (TextView)findViewById(R.id.nameItem);
+        //TextView title = (TextView)findViewById(R.id.nameItem);
         TextView description = (TextView)findViewById(R.id.descriptionItem);
+        TextView phone = (TextView)findViewById(R.id.phoneNumber);
+        TextView zipcode = (TextView)findViewById(R.id.zipcode);
+        TextView mail = (TextView)findViewById(R.id.mail);
+        //TextView title = (TextView)findViewById(R.id.nameItem);
         CollapsingToolbarLayout ctl = (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout_Event);
 
         description.setText(descriptionString);
-        title.setText(titleString);
+        phone.setText(phoneNumberString);
+        zipcode.setText(zipCodeString);
+        mail.setText(mailString);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_Event);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -55,6 +55,9 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.EntryViewHol
                 intent.putExtra("description", entry.getDescription());
                 intent.putExtra("title", entry.getName());
                 intent.putExtra("Picture", entry.getImageUri());
+                intent.putExtra("Phonenumber", entry.getPhoneNr());
+                intent.putExtra("Zipcode", entry.getZipcode());
+                intent.putExtra("Mail", entry.getMail());
                 context.startActivity(intent);
             }
         });
