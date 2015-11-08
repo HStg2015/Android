@@ -95,7 +95,13 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     private void callButtonPressed() {
-        //Todo
+        String pNumber = getIntent().getExtras().getString("Phonenumber");
+        System.out.println("Calling Number: "+pNumber);
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+pNumber));
+
+        startActivity(intent);
     }
 
     @Override
