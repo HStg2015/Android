@@ -129,8 +129,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_Kleinanzeigen) {
 
         } else if (id == R.id.nav_InstaHelp) {
-            rv=null;
-            Log.d("","Wow......");
             Intent intent = new Intent(MainActivity.this, InstaActivity.class);
             startActivity(intent);
             finish();

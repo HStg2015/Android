@@ -48,6 +48,8 @@ public class EntryAdapter extends RecyclerView.Adapter<EntryAdapter.EntryViewHol
                 Entry entry = eS.getList().get(i);
                 System.out.println(i);
                 Intent intent =  new Intent(context, ItemActivity.class);
+                intent.putExtra("description", entry.getDescription());
+                intent.putExtra("title",entry.getName());
                 context.startActivity(intent);
             }
         });
