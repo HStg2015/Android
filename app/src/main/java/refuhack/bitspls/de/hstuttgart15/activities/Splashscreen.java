@@ -16,7 +16,7 @@ import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
 public class Splashscreen extends Activity {
 
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 3500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
