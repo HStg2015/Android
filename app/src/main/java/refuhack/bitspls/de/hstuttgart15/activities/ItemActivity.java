@@ -35,9 +35,15 @@ public class ItemActivity extends AppCompatActivity {
         String titleString = intent.getExtras().getString("title");
         String descriptionString = intent.getExtras().getString("description");
         Uri pictureUri = (Uri)intent.getExtras().get("Picture");
+        String phoneNumberString = intent.getExtras().getString("Phonenumber");
+        String zipCodeString = intent.getExtras().getString("Zipcode");
+        String mailString = intent.getExtras().getString("Mail");
 
-        TextView title = (TextView)findViewById(R.id.nameItem);
+        //TextView title = (TextView)findViewById(R.id.nameItem);
         TextView description = (TextView)findViewById(R.id.descriptionItem);
+        TextView phone = (TextView)findViewById(R.id.phoneNumber);
+        TextView zipcode = (TextView)findViewById(R.id.zipcode);
+        TextView mail = (TextView)findViewById(R.id.mail);
 
         Target target = new Target() {
             @Override
@@ -63,7 +69,10 @@ public class ItemActivity extends AppCompatActivity {
         setTitle(titleString);
 
         description.setText(descriptionString);
-        title.setText(titleString);
+        phone.setText(phoneNumberString);
+        zipcode.setText(zipCodeString);
+        mail.setText(mailString);
+        //title.setText(titleString);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
