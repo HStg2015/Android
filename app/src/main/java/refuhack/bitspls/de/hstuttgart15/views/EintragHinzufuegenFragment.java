@@ -39,6 +39,7 @@ import refuhack.bitspls.de.hstuttgart15.models.Anzeige;
 import refuhack.bitspls.de.hstuttgart15.models.Entry;
 import refuhack.bitspls.de.hstuttgart15.models.EntryStorage;
 import refuhack.bitspls.de.hstuttgart15.network.AnzeigenNetwork;
+import refuhack.bitspls.de.hstuttgart15.network.UrlConfig;
 
 /**
  * Created by Lasse on 06.11.2015.
@@ -156,6 +157,7 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
             return;
 
         Entry e = new Entry();
+        e.setCategoryId(1); // TODO: Add UI
         e.setName(tTitel);
         e.setDescription(tBeschreibung);
         e.setPhoneNr(tTelefon);
@@ -164,7 +166,7 @@ public class EintragHinzufuegenFragment extends  AppCompatActivity {
         e.setImageUri(uri);
         e.setDate(new DateTime());
         EntryStorage.getInstance().addEntry(e);
-        an.addEintrag(e, "https://morning-waters-8909.herokuapp.com/simple_offer/");
+        an.addEintrag(e, UrlConfig.kSimpleOfferUrl);
     }
 
     private void pickFromGallery(){
