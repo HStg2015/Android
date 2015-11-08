@@ -22,7 +22,7 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity android:name=".activities.Splashscreen"
-            android:label=""
+            android:label="HStuttgart15"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
