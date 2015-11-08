@@ -50,17 +50,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
-                //startActivity(intent);
+                Intent intent = new Intent(view.getContext(), EintragHinzufuegenFragment.class);
+                startActivity(intent);
                 //eintragfrag.show(fm, "EintragFrag");
-
-                try {
-                    DateTime dt = new DateTime("2015-11-07T15:01:07.078805Z");
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
                 //AnzeigenNetwork an = new AnzeigenNetwork(getApplicationContext());
                 //an.getData("https://morning-waters-8909.herokuapp.com/simple_offer/");
 
